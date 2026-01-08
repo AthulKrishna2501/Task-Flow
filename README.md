@@ -1,73 +1,171 @@
-# Welcome to your Lovable project
+# Vite React Shadcn Template
 
-## Project info
+A modern, feature-rich React application built with Vite, TypeScript, and shadcn/ui components. This template provides a solid foundation for building scalable web applications with a beautiful, accessible UI.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## 🚀 Features
 
-## How can I edit this code?
+- **Modern Tech Stack**: Built with React, TypeScript, Vite, and Tailwind CSS
+- **Beautiful UI Components**: Powered by shadcn/ui with Radix UI primitives
+- **Responsive Design**: Mobile-first approach with responsive layouts
+- **Form Handling**: React Hook Form with Zod validation
+- **Data Fetching**: TanStack Query for efficient server state management
+- **Drag & Drop**: DnD Kit for intuitive drag and drop interactions
+- **Dark Mode**: Built-in dark/light theme support
+- **Charts & Data Visualization**: Recharts for data visualization
+- **Date Handling**: date-fns for date operations
+- **Accessibility**: ARIA-compliant components from Radix UI
+- **Animations**: Smooth animations with Tailwind CSS and custom keyframes
 
-There are several ways of editing your application.
+## 🛠️ Technology Stack
 
-**Use Lovable**
+### Framework & Language
+- [React](https://reactjs.org/) - JavaScript library for building user interfaces
+- [TypeScript](https://www.typescriptlang.org/) - Typed superset of JavaScript
+- [Vite](https://vitejs.dev/) - Fast build tool and development server
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+### UI Components & Libraries
+- [shadcn/ui](https://ui.shadcn.com/) - Re-usable components built using Radix UI and Tailwind CSS
+- [Radix UI](https://www.radix-ui.com/) - Accessible UI components
+- [Lucide React](https://lucide.dev/) - Beautifully simple icons
+- [Recharts](https://recharts.org/) - Charting library based on D3
+- [React Hook Form](https://react-hook-form.com/) - Performant, flexible forms
+- [Zod](https://zod.dev/) - TypeScript-first schema validation
+- [Sonner](https://sonner.emilkowal.ski/) - Accessible toast component
 
-Changes made via Lovable will be committed automatically to this repo.
+### Additional Libraries
+- [TanStack Query](https://tanstack.com/query) - Server state management
+- [DnD Kit](https://dndkit.com/) - Modern, lightweight drag and drop toolkit
+- [React Router](https://reactrouter.com/) - Declarative routing for React
+- [date-fns](https://date-fns.org/) - Modern JavaScript date utility library
+- [Supabase](https://supabase.com/) - Open source Firebase alternative
 
-**Use your preferred IDE**
+## 📦 Installation
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+1. **Clone the repository**
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+```bash
+git clone <your-repo-url>
+cd vite_react_shadcn_ts
+```
 
-Follow these steps:
+2. **Install dependencies**
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+```bash
+npm install
+```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+3. **Set up environment variables**
 
-# Step 3: Install the necessary dependencies.
-npm i
+Create a `.env` file in the root directory with the following variables:
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```env
+VITE_SUPABASE_URL=<your-supabase-url>
+VITE_SUPABASE_ANON_KEY=<your-supabase-anon-key>
+```
+
+## 🚀 Development
+
+1. **Start the development server**
+
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Your application will be available at `http://localhost:8080`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+2. **Build for production**
 
-**Use GitHub Codespaces**
+```bash
+npm run build
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+3. **Preview the production build**
 
-## What technologies are used for this project?
+```bash
+npm run preview
+```
 
-This project is built with:
+4. **Lint the code**
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+```bash
+npm run lint
+```
 
-## How can I deploy this project?
+## 🗂️ Project Structure
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+```
+├── public/                 # Static assets
+├── src/
+│   ├── components/         # Reusable UI components
+│   │   └── ui/            # shadcn/ui components
+│   ├── lib/               # Utility functions and configuration
+│   ├── hooks/             # Custom React hooks
+│   ├── pages/             # Page components
+│   ├── assets/            # Images and other assets
+│   ├── types/             # TypeScript type definitions
+│   └── App.tsx            # Main application component
+├── components.json        # shadcn/ui configuration
+├── index.html             # HTML entry point
+├── vite.config.ts         # Vite configuration
+├── tailwind.config.ts     # Tailwind CSS configuration
+└── tsconfig.json          # TypeScript configuration
+```
 
-## Can I connect a custom domain to my Lovable project?
+## 🧪 Testing
 
-Yes, you can!
+Coming soon - Testing utilities will be added to help ensure code quality.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## 💄 Customization
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+### UI Theme
+- Modify the theme in `tailwind.config.ts`
+- Update color schemes in the `extend.colors` section
+- Add custom animations in the `extend.animation` section
+
+### Components
+- Add new components to the `src/components/ui` directory
+- Use `npx shadcn-ui@latest add [component-name]` to install additional shadcn/ui components
+- Create page-specific components in the `src/components` directory
+
+## 🚀 Deployment
+
+### Vercel
+1. Connect your GitHub repository to Vercel
+2. Set build command to `npm run build`
+3. Set output directory to `dist`
+4. Set Node version to 18.x or higher
+
+### Netlify
+1. Connect your GitHub repository to Netlify
+2. Set build command to `npm run build`
+3. Set publish directory to `dist`
+
+### GitHub Pages
+1. Build the project with `npm run build`
+2. Deploy the `dist` folder to your GitHub Pages branch
+
+## 🔧 Commands
+
+- `npm run dev` - Start the development server
+- `npm run build` - Build the application for production
+- `npm run build:dev` - Build the application in development mode
+- `npm run lint` - Lint the codebase
+- `npm run preview` - Preview the production build locally
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Make your changes
+4. Commit your changes (`git commit -m 'Add amazing feature'`)
+5. Push to the branch (`git push origin feature/amazing-feature`)
+6. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🆘 Support
+
+If you encounter any issues or have questions, feel free to open an issue in the repository.
