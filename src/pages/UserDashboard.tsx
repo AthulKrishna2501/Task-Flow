@@ -6,7 +6,6 @@ import { Task, TaskStatus } from '@/types/database';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 import { useAuth } from '@/contexts/AuthContext';
-import { NotificationDropdown } from '@/hooks/use-notifications';
 import { KanbanBoard } from '@/components/KanbanBoard';
 import { PerformanceChart } from '@/components/PerformanceChart';
 import { Button } from '@/components/ui/button';
@@ -249,9 +248,7 @@ const UserDashboard = () => {
     <DashboardLayout
       title="My Tasks"
       description="View and manage your assigned tasks"
-      actions={
-        <NotificationDropdown userId={user?.id} />
-      }
+      actions={undefined}
     >
       {/* Performance Chart */}
       <PerformanceChart tasks={tasks} />

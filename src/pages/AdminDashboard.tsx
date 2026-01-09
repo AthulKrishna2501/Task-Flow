@@ -23,8 +23,8 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { calculateEmployeePerformance, EmployeePerformance } from '@/lib/performance';
-import { NotificationDropdown } from '@/hooks/use-notifications';
 
+const PAGE_SIZE = 20;
 
 const AdminDashboard = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -452,7 +452,7 @@ const AdminDashboard = () => {
       description="Overview of all tasks and team activity"
       actions={
         <div className="flex items-center gap-2">
-          <NotificationDropdown userId={userId} />
+
           <Button onClick={() => setCreateDialogOpen(true)} className="gap-2">
             <Plus className="h-4 w-4" />
             Create Task
@@ -507,12 +507,12 @@ const AdminDashboard = () => {
       <EmployeePerformanceMetrics performanceData={performanceData} />
 
       {/* Team Members */}
-      <TeamMembers 
-        teamMembers={teamMembers} 
+      <TeamMembers
+        teamMembers={teamMembers}
         onRemoveMember={(memberId, memberName) => {
           setEmployeeToRemove({ id: memberId, name: memberName });
           setRemoveEmployeeConfirmOpen(true);
-        }} 
+        }}
       />
 
       {/* Pending Approvals Alert */}
@@ -596,7 +596,7 @@ const AdminDashboard = () => {
           <AlertDialogHeader>
             <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
             <AlertDialogDescription>
-              This action cannot be undone. This will permanently remove {employeeToRemove?.name} 
+              This action cannot be undone. This will permanently remove {employeeToRemove?.name}
               from the system, unassign their tasks, and delete all their profile data.
             </AlertDialogDescription>
           </AlertDialogHeader>

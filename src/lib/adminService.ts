@@ -10,42 +10,38 @@ export const adminService = {
   // Function to approve a user
   async approveUser(userId: string): Promise<ApprovalResult> {
     try {
-      // First, try the direct database approach (this might fail due to RLS)
-      const { error: profileError, data } = await supabase
-        .from('profiles')
-        .update({ is_approved: true })
-        .eq('id', userId)
-        .select()
-        .single();
+      // Use the database function to approve user AND confirm their email
+      const { data: rpcResult, error: rpcError } = await supabase
+        .rpc('approve_user_and_confirm_email', { target_user_id: userId });
 
-      if (profileError) {
-        console.error('Direct DB update failed, attempting fallback methods:', profileError);
-        
-        // If direct update fails, we might need to use a Supabase Function
-        // This is a fallback approach - in a real implementation, you'd call an edge function
-        // that runs with service role privileges
-        
-        // For now, let's try using a custom Supabase function if it exists
-        const { data: rpcResult, error: rpcError } = await supabase
-          .rpc('approve_user', { target_user_id: userId });
-        
-        if (rpcError) {
-          console.error('RPC function also failed:', rpcError);
+      if (rpcError) {
+        console.error('RPC function failed:', rpcError);
+
+        // Fallback: Try direct database update (won't confirm email though)
+        const { error: profileError, data } = await supabase
+          .from('profiles')
+          .update({ is_approved: true })
+          .eq('id', userId)
+          .select()
+          .single();
+
+        if (profileError) {
           return {
             success: false,
-            error: `Failed to approve user. Database error: ${rpcError.message}. This may require database configuration.`
+            error: `Failed to approve user. Database error: ${profileError.message}. Please ensure the database function 'approve_user_and_confirm_email' exists.`
           };
         }
-        
+
         return {
           success: true,
-          data: rpcResult
+          data,
+          error: 'User approved but email may not be confirmed. User might need manual email confirmation.'
         };
       }
 
       return {
         success: true,
-        data
+        data: rpcResult
       };
     } catch (error) {
       console.error('Error in approveUser:', error);

@@ -141,7 +141,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     if (error) throw error;
 
-    // Check if user is approved after sign in
     const userId = data.user?.id;
     if (userId) {
       const { data: profileData } = await supabase
@@ -165,7 +164,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       options: {
         data: {
           full_name: fullName,
-        }
+        },
+        emailRedirectTo: undefined, // Disable email confirmation redirect
       }
     });
 

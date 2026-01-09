@@ -37,7 +37,6 @@ import { cn } from '@/lib/utils';
 import { Task, TaskStatus, Profile } from '@/types/database';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
-import { createNotification } from '@/hooks/use-notifications';
 
 const taskSchema = z.object({
   task_name: z.string().min(1, 'Task name is required').max(200, 'Task name is too long'),
@@ -159,15 +158,7 @@ export const CreateTaskDialog = ({
         
         if (error) throw error;
         
-        // Send notification to the assigned user
-        if (newTask) {
-          await createNotification(
-            values.assigned_user_id,
-            'New Task Assigned',
-            `A new task "${values.task_name}" has been assigned to you with deadline ${format(values.deadline, "PPP")}.`,
-            newTask.id
-          );
-        }
+
         
         toast({
           title: 'Task Created',
